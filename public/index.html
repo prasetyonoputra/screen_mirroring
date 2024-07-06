@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <input type="text" placeholder="Access Key" id="accessKey" />
+    <button onclick="openModalAuth()">Enter Room</button>
+  </body>
+
+  <!-- <script src="/node_modules/axios/dist/axios.min.js"></script> -->
+  <script>
+    function openModalAuth() {
+      window.location.href = "/mirror";
+      // let accessKey = document.getElementById("accessKey").value;
+
+      // axios
+      //   .post("/mirror", {
+      //     accessKey: accessKey,
+      //   })
+      //   .then(function (response) {
+      //     console.log("Response:", response);
+
+      //     document.open();
+      //     document.write(response.data);
+      //     document.close();
+      //   })
+      //   .catch(function (error) {
+      //     console.error("Error:", error);
+      //   });
+    }
+  </script>
+</html>

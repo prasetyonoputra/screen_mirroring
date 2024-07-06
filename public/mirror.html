@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #screen_content {
+        width: 70%;
+        height: 70%;
+        border: 1px solid black;
+      }
+
+      #modal_invite_link {
+        display: none;
+        background-color: black;
+        color: white;
+      }
+
+      .container {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #modal_invite_link {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: black;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .header_invite_link {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .body_invite_link {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="screen_content"></div>
+
+      <div>
+        <button onclick="openModalInviteLink()">Invite Link</button>
+      </div>
+    </div>
+
+    <div id="modal_invite_link">
+      <div class="header_invite_link">
+        <button onclick="closeModalInviteLink()">X</button>
+      </div>
+
+      <div class="body_invite_link">
+        <span id="text_invite_link"></span>
+      </div>
+    </div>
+
+    <script>
+      function openModalInviteLink() {
+        let modal = document.getElementById("modal_invite_link");
+        modal.style.display = "block";
+
+        document.getElementById("text_invite_link").textContent =
+          window.location.href;
+      }
+
+      function closeModalInviteLink() {
+        let modal = document.getElementById("modal_invite_link");
+        modal.style.display = "none";
+
+        document.getElementById("text_invite_link").textContent = "";
+      }
+    </script>
+
+    <script type="module">
+      import Hyperbeam from "https://unpkg.com/@hyperbeam/web@latest/dist/index.js";
+      const resp = await fetch("/computer");
+      const data = await resp.json();
+      const hb = await Hyperbeam(screen_content, data.embed_url);
+    </script>
+  </body>
+</html>
